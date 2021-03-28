@@ -8,14 +8,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class Controller {
 
     @PostMapping("/alunos")
-    Aluno aluno(@RequestBody Aluno aluno){
-        Aluno newAlun = new Aluno("Matheus", 22, "6");
+    String aluno(@RequestBody Aluno aluno){
+        Aluno novoAluno = new Aluno();
 
+        novoAluno.setNome(aluno.getNome());
+        if(aluno.getIdade() >= 10 && aluno.getSala() == "5") {
+            return "Aluno muito velho!";
+        }
         try {
-            newAlun.setNome(aluno.getNome());
-            newAlun.setIdade(aluno.getIdade());
-            newAlun.setSala(aluno.getSala());
-            return newAlun;
+            return "Parabéns o " + novoAluno.getNome() + " está cadastrado!";
         }catch (AlunoException e) {
             throw new AlunoException("Error ao tentar converter idade" + e);
         }
