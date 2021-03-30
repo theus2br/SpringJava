@@ -1,8 +1,8 @@
 package com.mycompany.school;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class Controller {
@@ -20,5 +20,10 @@ public class Controller {
         }catch (AlunoException e) {
             throw new AlunoException("Error ao tentar converter idade" + e);
         }
+    }
+    @GetMapping("/sala/{id}")
+    ResponseEntity listarAluno(@PathVariable String id){
+        return new ResponseEntity<String>("GET Response : "
+                + id, HttpStatus.OK);
     }
 }
