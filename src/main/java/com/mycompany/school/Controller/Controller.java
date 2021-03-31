@@ -1,5 +1,7 @@
-package com.mycompany.school;
+package com.mycompany.school.Controller;
 
+import com.mycompany.school.Models.Aluno;
+import com.mycompany.school.Models.AlunoException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,8 +14,8 @@ public class Controller {
         Aluno novoAluno = new Aluno();
 
         novoAluno.setNome(aluno.getNome());
-        if(aluno.getIdade() >= 10 && aluno.getSala() == "5") {
-            return "Aluno muito velho!";
+        if(aluno.getIdade() >= 18) {
+            return "Nosso teste deu certo!";
         }
         try {
             return "Parabéns o " + novoAluno.getNome() + " está cadastrado!";
@@ -22,7 +24,7 @@ public class Controller {
         }
     }
     @GetMapping("/sala/{id}")
-    ResponseEntity listarAluno(@PathVariable String id){
+    ResponseEntity listarAluno(@PathVariable Boolean id){
         return new ResponseEntity<String>("GET Response : "
                 + id, HttpStatus.OK);
     }

@@ -1,4 +1,4 @@
-package com.mycompany.school;
+package com.mycompany.school.Models;
 
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

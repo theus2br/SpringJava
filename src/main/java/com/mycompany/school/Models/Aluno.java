@@ -1,4 +1,4 @@
-package com.mycompany.school;
+package com.mycompany.school.Models;
 
 import lombok.Data;
 import org.jetbrains.annotations.NotNull;
